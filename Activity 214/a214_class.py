@@ -24,7 +24,7 @@ def handle_login():
         print('Password: ', password_entry.get())
         result_label.config(text='Successfully logged-in')
     else:
-        result_label.config(text='invalid login')
+        result_label.config(text='Invalid Login')
 
 def handle_sign_up():
     if is_valid_password(password_entry.get()):
@@ -64,7 +64,7 @@ def store_users():
 
 def check_users():
     if user_entry.get() in users:
-        if pbkdf2_sha256.verify(users[user_entry.get()],hash):
+        if pbkdf2_sha256.verify(password_entry.get(),users[user_entry.get()]):
             return True
         else:
             return False
